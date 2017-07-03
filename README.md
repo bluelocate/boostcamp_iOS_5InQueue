@@ -372,7 +372,147 @@ let replacementTextHasDecimalSeparator = string.range(of: ".")
 * Foundation의 String의 stringFromNumber 메서드 이름 변경
   * string.rangeOfString() -> [range(of:options:range:locale:)](https://developer.apple.com/documentation/swift/string/1642786-range)
 
+## 6장
+
+> 114 페이지
+
+### 수정 전
+```swift
+segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+```
+
+### 수정 후
+```swift
+segmentedControl.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+```
+
+### 근거
+* Swift Language Guide
+	* UIColor의 whiteColor() -> white, colorWithAlphaComponent() -> withAlphaComponent 이름 변경
+		* [white](https://developer.apple.com/documentation/uikit/uicolor/1621920-white)
+		* [withAlphaComponent()](https://developer.apple.com/documentation/uikit/uicolor/1621922-withalphacomponent)
+* Swift API Design Guidelines
+	* Naming
+		* Promote Clear Usage
 
 
+> 115, 118 페이지
+
+### 수정 전
+> 115 페이지
+
+```swift
+let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(view.topAnchor)
+let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor)
+let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
+```
+> 118 페이지
+
+```swift
+let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 8)
+```
+### 수정 후
+> 115 페이지
+
+```swift
+let topConstraint = segmentedControl.topAnchor.constraint(equalTo: view.topAnchor)
+let leadingConstraint = segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+let trailingConstraint = segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+```
+> 118 페이지
+
+```swift
+let topConstraint = segmentedControl.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8)
+```
+### 근거
+* Swift Language Guide
+	* NSLayoutAnchor의 constraintEqualToAnchor() -> constraint(equalTo: NSLayoutAnchor) 이름 변경
+		* [constraint(equalTo: NSLayoutAnchor)](https://developer.apple.com/documentation/uikit/nslayoutanchor/1500946-constraint)
+* Swift API Design Guidelines
+	* Naming
+		* Promote Clear Usage
+		* Argument Labels
+
+>116 페이지
+
+### 수정 전 	
+```swift
+topConstraint.active = true
+leadingConstraint.active = true
+trailingConstraint.active = true
+```
+### 수정 후
+```swift
+topConstraint.isActive = true
+leadingConstraint.isActive = true
+trailingConstraint.isActive = true
+```
+### 근거
+* NSLayoutConstraint의 .active -> .isActive
+
+>119 페이지
+
+### 수정 전
+```swift
+let margins = view.layoutMarginGuide
+```
+
+### 수정 후
+```swift
+let viewLayoutMargins = view.layoutMarginGuide
+```
+
+### 근거
+* Swift API Design Guidelines
+	* Naming
+		* Give clarity with useage of variable
+
+>120페이지
+### 수정 전
+```swift
+let aspectConstraint = NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: 1.5, constant: 0.0)
+```
+
+### 수정 후
+```swift
+let aspectConstraint = NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: imageView, attribute: .height, multiplier: 1.5, constant: 0.0)
+```
+
+### 근거
+* Enum의 case 명명법 변경
+	* UpperCamelCase -> lowerCamelCase
+	* The Swift Programming Language(Language Guide)
+		* [Enumerations](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html)
+			* Enumeration Syntax
 
 
+>122 페이지
+
+### 수정 전
+```swift
+case 0:
+	mapView.mapType = .Standard
+case 1:
+	mapView.mapType = .Hybrid
+case 2:
+	mapView.mapType = .Satellite
+default:
+	break
+```
+### 수정 후
+```swift
+case 0:
+	mapView.mapType = .standard
+case 1:
+	mapView.mapType = .hybrid
+case 2:
+	mapView.mapType = .satellite
+default:
+	break
+```
+### 근거
+* Enum의 case 명명법 변경
+	* UpperCamelCase -> lowerCamelCase
+	* The Swift Programming Language(Language Guide)
+		* [Enumerations](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html)
+			* Enumeration Syntax
