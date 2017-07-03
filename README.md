@@ -189,32 +189,32 @@ firstView.addSubview(secondView)
 ### 수정 전
 ```swift
 if let text = textField.text, where !text.isEmpty {
-celsiusLabel.text = text
+  celsiusLabel.text = text
 }
 else {
-celsiusLabel.text = "???"
+  celsiusLabel.text = "???"
 } 
 ```
 
 ### 수정 후
 ```swift
 if let celsiusFromTextField = textField.text, !text.isEmpty {
-celsiusLabel.text = celsiusFromTextField
+  celsiusLabel.text = celsiusFromTextField
 }
 else {
-celsiusLabel.text = "???"
+  celsiusLabel.text = "???"
 } 
 ```
 
 ### 근거
 * Swift API Design Guidelines
-* Naming
-* Promote Clear Usage
+  * Naming
+    * Promote Clear Usage
 * if-let 구문 내 조건 추가 문법 변경
-* where -> ,
-* The Swift Programming Language(Language Guide)
-* [TheBasics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
-* Optional Binding Syntax
+  * where -> ,
+  * The Swift Programming Language(Language Guide)
+    * [TheBasics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
+      * Optional Binding Syntax
 
 > 84 페이지
 
@@ -231,127 +231,127 @@ celsiusLabel.text = "???"
 
 ### 근거
 * Swift API Design Guidelines
-* Naming
-* Promote Clear Usage
+  * Naming
+    * Promote Clear Usage
 
-> 86 페이지 	
+> 86 페이지  
 
 ### 수정 전
 ```swift
 if let value = celsiusValue {
-celsiusLabel.text = "\(value)"
+  celsiusLabel.text = "\(value)"
 }
 else {
-celsiusLabel.text = "???"
+  celsiusLabel.text = "???"
 }
 ```
 ### 수정 후
 ```swift
 if let celsiusValue = celsiusValue {
-celsiusLabel.text = "\(celsiusValue)"
+  celsiusLabel.text = "\(celsiusValue)"
 }
 else {
-celsiusLabel.text = "???"
+  celsiusLabel.text = "???"
 }
 ```
 ### 근거
 * Swift API Design Guidelines
-* Naming
-* Promote Clear Usage
+  * Naming
+    * Promote Clear Usage
 
 >87 페이지
 
 ### 수정 전
 ```swift
 if let text = textField.text, value = Double(text) {
-fahrenheitValue = value
+  fahrenheitValue = value
 }
 else {
-fahrenheitValue = nil
+  fahrenheitValue = nil
 }
 ```
 
 ### 수정 후
 ```swift
 if let fahrenheitFromText = textField.text, let fahrenheitValue = Double(fahrenheitFromText) {
-self.fahrenheitValue = fahrenheitValue
+  self.fahrenheitValue = fahrenheitValue
 }
 else {
-self.fahrenheitValue = nil
+  self.fahrenheitValue = nil
 }
 ```
 
 ### 근거
 * Swift API Design Guidelines
-* Naming
-* Promote Clear Usage
+  * Naming
+    * Promote Clear Usage
 * if-let 구문 내 다중 옵셔널 바인딩 문법 변경
-* The Swift Programming Language(Language Guide)
-* [TheBasics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
-* Optional Binding Syntax
+  * The Swift Programming Language(Language Guide)
+    * [TheBasics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
+      * Optional Binding Syntax
 
 > 88 페이지
 
 ### 수정 전
 ```swift
 let numberFormatter: NSNumberFormatter = {
-let nf = NSNumberFormatter()
-nf.numberStyle = .DecimalStyle
-nf.minimumFractionDigits = 0
-nf.maximumFractionDigits = 1
-return nf
+    let nf = NSNumberFormatter()
+    nf.numberStyle = .DecimalStyle
+    nf.minimumFractionDigits = 0
+    nf.maximumFractionDigits = 1
+    return nf
 }()
 ```
 ### 수정 후
 ```swift
 let numberFormatter: NumberFormatter = {
-let numberFormatter = NumberFormatter()
-numberFormatter.numberStyle = .decimal
-numberFormatter.minimumFractionDigits = 0
-numberFormatter.maximumFractionDigits = 1
-return numberFormatter
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .decimal
+    numberFormatter.minimumFractionDigits = 0
+    numberFormatter.maximumFractionDigits = 1
+    return numberFormatter
 }()
 ```
 
 ### 근거
 * Swift API Design Guidelines
-* Naming
-* Promote Clear Usage
+  * Naming
+    * Promote Clear Usage
 * Foundation의 NSNumberFormatter의 Swift 클래스 이름 변경
-* NSNumberFormatter -> [NumberFormatter](https://developer.apple.com/documentation/foundation/numberformatter)
+  * NSNumberFormatter -> [NumberFormatter](https://developer.apple.com/documentation/foundation/numberformatter)
 * Enum의 case 명명법 변경
-* UpperCamelCase -> lowerCamelCase
-* The Swift Programming Language(Language Guide)
-* [Enumerations](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html)
-* Enumeration Syntax
+  * UpperCamelCase -> lowerCamelCase
+  * The Swift Programming Language(Language Guide)
+    * [Enumerations](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html)
+      * Enumeration Syntax
 
 > 88 페이지
 
 ### 수정 전
 ```swift
 if let value = celsiusValue {
-celsiusLabel.text = numberFormatter.stringFromNumber(value)
+  celsiusLabel.text = numberFormatter.stringFromNumber(value)
 }
 else {
-celsiusLabel.text = "???"
+  celsiusLabel.text = "???"
 }
 ```
 ### 수정 후
 ```swift
 if let celsiusValue = celsiusValue {
-celsiusLabel.text = numberFormatter.string(from: NSNumber(value: celsiusValue))
+  celsiusLabel.text = numberFormatter.string(from: NSNumber(value: celsiusValue))
 }
 else {
-celsiusLabel.text = "???"
+  celsiusLabel.text = "???"
 }
 ```
 ### 근거
 * Swift API Design Guidelines
-* Naming
-* Promote Clear Usage
-* Argument Labels
+  * Naming
+    * Promote Clear Usage
+    * Argument Labels
 * Foundation의 NumberFormatter의 stringFromNumber 메서드 이름 변경
-* stringFromNumber() -> [string(from:)](https://developer.apple.com/documentation/foundation/numberformatter/1418046-string)
+  * stringFromNumber() -> [string(from:)](https://developer.apple.com/documentation/foundation/numberformatter/1418046-string)
 
 > 92페이지
 
@@ -367,7 +367,12 @@ let replacementTextHasDecimalSeparator = string.range(of: ".")
 ```
 ### 근거
 * Swift API Design Guidelines
-* Naming
-* Argument Labels
+  * Naming
+    * Argument Labels
 * Foundation의 String의 stringFromNumber 메서드 이름 변경
-* string.rangeOfString() -> [range(of:options:range:locale:)](https://developer.apple.com/documentation/swift/string/1642786-range)
+  * string.rangeOfString() -> [range(of:options:range:locale:)](https://developer.apple.com/documentation/swift/string/1642786-range)
+
+
+
+
+
