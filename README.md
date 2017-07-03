@@ -18,6 +18,43 @@ var greeting = "Hello, playground"
 		* Promote Clear Usage
 
 
+> 41 페이지
+
+### 수정 전
+```swift
+var reading1: Float?
+var reading2: Float?
+var reading3: Float?
+
+if let r1 = reading1, r2 = reading2, r3 = reading3 {
+	let avg = (r1 + r2 + r3) / 3
+	} else { 
+		let errorString = "Instrument reported a reading 	    that was nil."
+	}
+```
+
+### 수정 후
+```swift
+var speed: Double? = 90.5
+var oilCheck: Double? = 9.2
+var rpm: Double? = 6.5
+
+if let speedDashboard = speed , let oilCheckDashboard = oilCheck , let rpmDashboard = rpm {
+	let averageValue = (speedDashboard + oilCheckDashboard + rpmDashboard) / 3 } else {
+	let errorString = "Instrument reported a reading 	    that was nil." }
+```
+### 근거
+* Swift API Design Guidelines
+  * Naming
+    * Promote Clear Usage
+* if-let 구문 내 다중 옵셔널 바인딩 문법 변경
+  * The Swift Programming Language(Language Guide)
+    * [TheBasics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
+      * Optional Binding Syntax		
+
+
+
+
 > 42 페이지
 
 ### 수정 전
