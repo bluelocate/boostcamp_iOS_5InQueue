@@ -1,4 +1,6 @@
-# boostcamp_iOS_5InQueue
+# Swift 예제코드 바로잡기
+Swift API Design Guidelines 및 The Swift Programming Language - Language Guide에 의거하여 교재 2장~6장의 예제코드를 수정한다.
+
 ## 2장
 > 32 페이지
 
@@ -28,7 +30,7 @@ var reading3: Float?
 
 if let r1 = reading1, r2 = reading2, r3 = reading3 {
 	let avg = (r1 + r2 + r3) / 3
-	} else { 
+	} else {
 		let errorString = "Instrument reported a reading 	    that was nil."
 	}
 ```
@@ -49,7 +51,7 @@ if let speedDashboard = speed , let oilCheckDashboard = oilCheck , let rpmDashbo
     * Promote Clear Usage
 * if-let 구문 내 다중 옵셔널 바인딩 문법 변경
   * The Swift Programming Language(Language Guide)
-    * [TheBasics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
+    * [The Basics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
       * Optional Binding Syntax		
 
 
@@ -230,7 +232,7 @@ if let text = textField.text, where !text.isEmpty {
 }
 else {
   celsiusLabel.text = "???"
-} 
+}
 ```
 
 ### 수정 후
@@ -240,7 +242,7 @@ if let celsiusFromTextField = textField.text, !text.isEmpty {
 }
 else {
   celsiusLabel.text = "???"
-} 
+}
 ```
 
 ### 근거
@@ -502,7 +504,7 @@ let viewLayoutMargins = view.layoutMarginGuide
 ### 근거
 * Swift API Design Guidelines
 	* Naming
-		* Give clarity with useage of variable
+		* Give clarity with usage of variable
 
 >120페이지
 ### 수정 전
